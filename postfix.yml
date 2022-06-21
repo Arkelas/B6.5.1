@@ -1,0 +1,19 @@
+---
+- hosts: rtest
+  gather_facts: no
+  become: yes
+  tasks:
+  - name: Install postfix
+    yum:
+      name: postfix
+      state: latest
+    tags:
+    - init
+
+  - name: Drop postfix
+    yum:
+      name: postfix
+      state: absent
+    tags:
+    - drop
+
